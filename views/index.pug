@@ -1,22 +1,29 @@
 html
   head
     title= "METAR Scraper"
+    style(type='text/css').
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
   body 
     h1= "METAR Scraper"
     table
       thead
-        tr 
+        tr
           th= "ICAO"
           th= "Flight Category"
           th= "Observation Time"
           th= "Raw METAR"
       tbody
         each icao in airportList
-          tr 
+          tr
             td= icao
             if retrievedData[icao] 
               td= retrievedData[icao].flightCategory
               td= retrievedData[icao].observationTime.toFormat('MMMM dd, t') + " (" + retrievedData[icao].age + " minutes old)"
               td= retrievedData[icao].raw
             else 
+              td= "<No Data Available>"
+              td= "<No Data Available>"
               td= "<No Data Available>"
