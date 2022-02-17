@@ -16,14 +16,12 @@ html
           th= "Observation Time"
           th= "Raw METAR"
       tbody
-        each icao in airportList
+        each val, icao in retrievedData
           tr
             td= icao
-            if retrievedData[icao] 
-              td= retrievedData[icao].flightCategory
-              td= retrievedData[icao].observationTime.toFormat('MMMM dd, t') + " (" + retrievedData[icao].age + " minutes old)"
-              td= retrievedData[icao].raw
+            td= val.flightCategory || '<NO DATA AVAILABLE>'
+            if val.observationTime
+              td= val.observationTime.toFormat('MMMM dd, t') + " (" + val.age + " minutes old)"
             else 
-              td= "<No Data Available>"
-              td= "<No Data Available>"
-              td= "<No Data Available>"
+              td= '<NO DATA AVAILABLE>'
+            td= val.raw || '<NO DATA AVAILABLE>'
