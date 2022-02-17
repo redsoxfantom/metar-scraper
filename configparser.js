@@ -17,11 +17,12 @@ for (let airportIdx = 0; airportIdx < configFileContents.airports.length; airpor
   airports.push(airport.icao)
 }
 
-let refreshInterval = timespan.parse(configFileContents.refreshinterval, 'seconds')
+let refreshInterval = timespan.parse(configFileContents.refreshinterval, 'ms')
 
 console.log('Config file successfully loaded and parsed!')
 console.log(`The following airports will be scraped: ${airports}`)
-console.log(`METARs will be refreshed every ${refreshInterval} seconds`)
+console.log(`METARs will be refreshed every ${refreshInterval} milliseconds`)
 
 module.exports.airports = airports
 module.exports.refreshInterval = refreshInterval
+module.exports.metarsource = configFileContents.metarsource
