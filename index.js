@@ -13,7 +13,19 @@ metarretriever(config.airports, config.metarsource, config.refreshInterval, (upd
 let app = express()
 app.set('view engine', 'pug')
 app.get('/', (req, res) => {
-  
+  let modifiedRetrievedData = {}
+  for(const [key, val] of Object.entries(retrievedData)) {
+    modifiedRetrievedData[key] = {
+      raw : val.raw,
+      observationTime : val.observationTime,
+      age : Math.round(val.observationTime.diffNow('minutes').values.minutes * -1),
+      flightCategory : val.flightCategory
+    }
+  }
+  res.render('index', {
+    retrievedData: modifiedRetrievedData,
+    airportList : config.airports
+  })
 })
 
 app.listen(8080, () => {

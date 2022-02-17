@@ -18,7 +18,6 @@ function retrieveMETARs(url, callback, refreshInterval) {
         let raw = metar.find(m => m.name === 'raw_text').value
         let icao = metar.find(m => m.name === 'station_id').value
         let observationTime = DateTime.fromISO(metar.find(m => m.name === 'observation_time').value)
-        let age = Math.round(observationTime.diffNow('minutes').values.minutes * -1)
         let flightCategory = metar.find(m => m.name === 'flight_category').value
   
         processedMetars[icao] = {

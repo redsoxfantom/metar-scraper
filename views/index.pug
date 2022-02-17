@@ -1,0 +1,22 @@
+html
+  head
+    title= "METAR Scraper"
+  body 
+    h1= "METAR Scraper"
+    table
+      thead
+        tr 
+          th= "ICAO"
+          th= "Flight Category"
+          th= "Observation Time"
+          th= "Raw METAR"
+      tbody
+        each icao in airportList
+          tr 
+            td= icao
+            if retrievedData[icao] 
+              td= retrievedData[icao].flightCategory
+              td= retrievedData[icao].observationTime.toFormat('MMMM dd, t') + " (" + retrievedData[icao].age + " minutes old)"
+              td= retrievedData[icao].raw
+            else 
+              td= "<No Data Available>"
