@@ -2,5 +2,8 @@ airports:
   - icao: KLOM
   - icao: KPHL
   - icao: KPNE
+  - icao: KTTN
+  - icao: KILG
+  - icao: KLNS
 refreshinterval: "5m"
 metarsource: https://www.aviationweather.gov/adds/dataserver_current/httpparam?dataSource=metars&requestType=retrieve&format=xml&hoursBeforeNow=5&mostRecentForEachStation=true&stationString={ICAOLIST}
