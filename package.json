@@ -1,0 +1,17 @@
+{
+  "name": "metar-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "needle": "^3.0.0",
+    "timespan-parser": "^1.2.0",
+    "yaml": "^1.10.2"
+  }
+}

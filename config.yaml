@@ -1,0 +1,5 @@
+airports:
+  - icao: KLOM
+  - icao: KPHL
+  - icao: KPNE
+refreshinterval: "5m"
