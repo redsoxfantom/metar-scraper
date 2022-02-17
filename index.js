@@ -37,7 +37,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/json', (req, res) => {
-  res.json(processRetrievedData())
+  res.json({
+    airports: config.airports,
+    data: processRetrievedData()
+  })
 })
 
 app.listen(8080, () => {
