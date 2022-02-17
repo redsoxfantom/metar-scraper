@@ -10,10 +10,12 @@ metarretriever(config.airports, config.metarsource, config.refreshInterval, (upd
   }
 })
 
-let app = express()
-app.set('view engine', 'pug')
-app.get('/', (req, res) => {
+function processRetrievedData() {
   let modifiedRetrievedData = {}
+  for (let airportIdx = 0; airportIdx < config.airports.length; airportIdx++) {
+    const airportICAO = config.airports[airportIdx];
+    modifiedRetrievedData[airportICAO] = {}
+  }
   for(const [key, val] of Object.entries(retrievedData)) {
     modifiedRetrievedData[key] = {
       raw : val.raw,
@@ -22,10 +24,20 @@ app.get('/', (req, res) => {
       flightCategory : val.flightCategory
     }
   }
+  return modifiedRetrievedData
+}
+
+let app = express()
+app.set('view engine', 'pug')
+app.get('/', (req, res) => {
+  
   res.render('index', {
-    retrievedData: modifiedRetrievedData,
-    airportList : config.airports
+    retrievedData: processRetrievedData()
   })
+})
+
+app.get('/json', (req, res) => {
+  res.json(processRetrievedData())
 })
 
 app.listen(8080, () => {
