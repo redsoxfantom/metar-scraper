@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
+    "luxon": "^2.3.0",
     "needle": "^3.0.0",
+    "pug": "^3.0.2",
     "timespan-parser": "^1.2.0",
     "yaml": "^1.10.2"
   }
